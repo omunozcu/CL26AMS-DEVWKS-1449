@@ -1,0 +1,7359 @@
+{
+	"info": {
+		"_postman_id": "fa989db4-cc60-4ef0-a755-6b3372714ee0",
+		"name": "(CL26) DEVWKS-1449",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JSON",
+			"item": [
+				{
+					"name": "1 Basic Verifications",
+					"item": [
+						{
+							"name": "1_01 Check RESTCONF API",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "http://198.18.128.100:8888/restconf",
+									"protocol": "http",
+									"host": [
+										"198",
+										"18",
+										"128",
+										"100"
+									],
+									"port": "8888",
+									"path": [
+										"restconf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1_02 (Error) Check RESTCONF API Wrong Credentials",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "dummy",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "http://198.18.128.100:8888/restconf",
+									"protocol": "http",
+									"host": [
+										"198",
+										"18",
+										"128",
+										"100"
+									],
+									"port": "8888",
+									"path": [
+										"restconf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "2 Query filtering",
+					"item": [
+						{
+							"name": "2_01 Query RESTCONF Capabilities",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/ietf-restconf-monitoring:restconf-state",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"ietf-restconf-monitoring:restconf-state"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_02 Get RESTCONF data resource",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_03 Get RESTCONF data resource with depth",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data?depth=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_04 Deep-dive into data resource - devices",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices?depth=2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_05 Deep-dive into data resource - devices device",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device?depth=2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_06 Filter device names",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device?fields=name",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "name"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_07 Filter devices and addresses option 1",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device?fields=name;address",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "name;address"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_08 Filter devices and addresses option 2",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data?fields=tailf-ncs:devices/device(name;address)",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "tailf-ncs:devices/device(name;address)"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "3 Device Actions",
+					"item": [
+						{
+							"name": "3_01 Device Group Fetch SSH Host Keys",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device-group=ALL_ROUTERS/fetch-ssh-host-keys",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device-group=ALL_ROUTERS",
+										"fetch-ssh-host-keys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_02 Device Group check-sync",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device-group=ALL_ROUTERS/check-sync",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device-group=ALL_ROUTERS",
+										"check-sync"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_03 Device sync-from",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/sync-from",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"sync-from"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_04 Device Connect",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/connect",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"connect"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_05 Device Ping",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/ping",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"ping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_06 Device check-sync",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/check-sync",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"check-sync"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_07 Device compare-config",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/compare-config",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"compare-config"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_08 Device sync-to",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/sync-to",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"sync-to"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "4 Loopback Creation",
+					"item": [
+						{
+							"name": "4_01 (dry-run) Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device\": [\r\n            {\r\n                \"name\": \"xr1\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 101,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"101.101.101.101\",\r\n                                        \"mask\": \"/32\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=native",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "native"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_02 (dry-run) Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Loopback\": {\r\n        \"id\": 101,\r\n        \"ipv4\": {\r\n            \"address\": {\r\n                \"ip\": \"101.101.101.101\",\r\n                \"mask\": \"/32\"\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface?dry-run=native",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "native"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_03 Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device\": [\r\n            {\r\n                \"name\": \"xr1\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 101,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"101.101.101.101\",\r\n                                        \"mask\": \"/32\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_04 Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Loopback\": {\r\n        \"id\": 101,\r\n        \"ipv4\": {\r\n            \"address\": {\r\n                \"ip\": \"101.101.101.101\",\r\n                \"mask\": \"/32\"\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_05 (dry-run) Create Loopbacks in two devices",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device\": [\r\n            {\r\n                \"name\": \"xr1\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 111,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"111.111.111.111\",\r\n                                        \"mask\": \"/32\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            },\r\n            {\r\n                \"name\": \"xr2\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 112,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"112.112.112.112\",\r\n                                        \"mask\": \"/32\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_06 Create Loopbacks in two devices",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device\": [\r\n            {\r\n                \"name\": \"xr1\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 111,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"111.111.111.111\",\r\n                                        \"mask\": \"/32\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            },\r\n            {\r\n                \"name\": \"xr2\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 112,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"112.112.112.112\",\r\n                                        \"mask\": \"/32\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "5 Edit Loopbacks",
+					"item": [
+						{
+							"name": "5_01 Get Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_02 (dry-run) Edit Loopback 101 IPv4 address (general)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device\": [\r\n            {\r\n                \"name\": \"xr1\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"Loopback\": [\r\n                            {\r\n                                \"id\": 101,\r\n                                \"ipv4\": {\r\n                                    \"address\": {\r\n                                        \"ip\": \"221.221.221.221\"\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_03 (dry-run) Edit Loopback 101 IPv4 address (specific)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ip\": \"221.221.221.221\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address/ip?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address",
+										"ip"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_04 (Error) Replace Loopback 101 IPv4 address",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": {\r\n        \"ip\": \"221.221.221.221\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_05 (dry-run) Replace Loopback 101 IPv4 address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": {\r\n        \"ip\": \"11.11.11.11\",\r\n        \"mask\": \"/32\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address?dry-run",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_06 Edit Loopback 101 xr1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ip\": \"11.11.11.11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address/ip?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address",
+										"ip"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_07 Replace Loopback 101 IPv4 address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": {\r\n        \"ip\": \"221.221.221.221\",\r\n        \"mask\": \"/32\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_08 Remove Loopback 101 xr1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "6 Interface Shutdown",
+					"item": [
+						{
+							"name": "6_01 (dry-run) Shutdown interface option 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device\": [\r\n            {\r\n                \"name\": \"xr1\",\r\n                \"config\": {\r\n                    \"tailf-ned-cisco-ios-xr:interface\": {\r\n                        \"GigabitEthernet\": [\r\n                            {\r\n                                \"id\": \"0/0/0/1\",\r\n                                \"shutdown\": [null]\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_02 (dry-run) Shutdown interface option 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shutdown\": [\r\n        null\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_03 Shutdown interface",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shutdown\": [\r\n        null\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_04 (dry-run) Remove shutdown interface option 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1/shutdown?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1",
+										"shutdown"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_05 (dry-run) Remove shutdown interface option 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n      <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <GigabitEthernet>\r\n          <id>0/0/0/1</id>\r\n          <shutdown xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                    nc:operation=\"delete\"/>\r\n        </GigabitEthernet>\r\n      </interface>\r\n    </config>\r\n  </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_06 Remove shutdown interface option 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1/shutdown?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1",
+										"shutdown"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_07 Remove shutdown interface option 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n      <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <GigabitEthernet>\r\n          <id>0/0/0/1</id>\r\n          <shutdown xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                    nc:operation=\"delete\"/>\r\n        </GigabitEthernet>\r\n      </interface>\r\n    </config>\r\n  </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "7 Additional Examples",
+					"item": [
+						{
+							"name": "Device Groups",
+							"item": [
+								{
+									"name": "(dry-run) Create Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device-group\": [\r\n            {\r\n                \"name\": \"EVEN_NUMBERED_ROUTERS\",\r\n                \"device-name\": [\r\n                    \"xr2\",\r\n                    \"xr4\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = pm.response.json();\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tailf-ncs:devices\": {\r\n        \"device-group\": [\r\n            {\r\n                \"name\": \"EVEN_NUMBERED_ROUTERS\",\r\n                \"device-name\": [\r\n                    \"xr2\",\r\n                    \"xr4\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=EVEN_NUMBERED_ROUTERS",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=EVEN_NUMBERED_ROUTERS"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Update Device Group option 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"device-group\": {\r\n        \"name\": \"EVEN_NUMBERED_ROUTERS\",\r\n        \"device-name\": [\r\n            \"xr2\"\r\n        ]\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=EVEN_NUMBERED_ROUTERS?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=EVEN_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Update Device Group option 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"device-name\": [\r\n        \"xr2\"\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=EVEN_NUMBERED_ROUTERS/device-name?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=EVEN_NUMBERED_ROUTERS",
+												"device-name"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = pm.response.json();\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"device-group\": {\r\n        \"name\": \"EVEN_NUMBERED_ROUTERS\",\r\n        \"device-name\": [\r\n            \"xr2\"\r\n        ]\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=EVEN_NUMBERED_ROUTERS?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=EVEN_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Remove Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=EVEN_NUMBERED_ROUTERS?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=EVEN_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = pm.response.json();\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=EVEN_NUMBERED_ROUTERS?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=EVEN_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Services",
+							"item": [
+								{
+									"name": "Service get-modifications",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/operations/DNS-config:DNS-config=DNS-servers-odd/get-modifications",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"operations",
+												"DNS-config:DNS-config=DNS-servers-odd",
+												"get-modifications"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Create DNS Service Instance Copy",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"DNS-config:DNS-config\": [\r\n      {\r\n        \"name\": \"DNS-servers-even\",\r\n        \"device\": [\"xr2\", \"xr4\"],\r\n        \"address\": [\"8.8.8.8\"],\r\n        \"src-if-type\": \"MgmtEth\",\r\n        \"src-if-number\": \"0/RP0/CPU0/0\"\r\n      }\r\n    ]\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create DNS Service Instance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = pm.response.json();\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"DNS-config:DNS-config\": [\r\n      {\r\n        \"name\": \"DNS-servers-even\",\r\n        \"device\": [\"xr2\", \"xr4\"],\r\n        \"address\": [\"8.8.8.8\"],\r\n        \"src-if-type\": \"MgmtEth\",\r\n        \"src-if-number\": \"0/RP0/CPU0/0\"\r\n      }\r\n    ]\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get list of services per device",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr2/service-list",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device=xr2",
+												"service-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET DNS-config Service Instance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-even",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-even"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Service instance check-sync",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/operations/DNS-config:DNS-config=DNS-servers-even/check-sync",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"operations",
+												"DNS-config:DNS-config=DNS-servers-even",
+												"check-sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove DNS server from xr2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = pm.response.json();\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr2/config/tailf-ned-cisco-ios-xr:domain/name-server=8.8.8.8?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device=xr2",
+												"config",
+												"tailf-ned-cisco-ios-xr:domain",
+												"name-server=8.8.8.8"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Service instance re-deploy",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"input\": {\r\n        \"dry-run\": {\r\n            \"outformat\": \"native\"\r\n        }\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-even/re-deploy",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-even",
+												"re-deploy"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Service instance re-deploy",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+json",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-even/re-deploy",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-even",
+												"re-deploy"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove Service instance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = pm.response.json();\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+json"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-even?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-even"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "(Error) Check RESTCONF API Wrong Port",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "http://198.18.128.100:8087/restconf",
+									"protocol": "http",
+									"host": [
+										"198",
+										"18",
+										"128",
+										"100"
+									],
+									"port": "8087",
+									"path": [
+										"restconf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "XML",
+			"item": [
+				{
+					"name": "1 Basic Verifications",
+					"item": [
+						{
+							"name": "1_01 Check RESTCONF API",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "http://198.18.128.100:8888/restconf",
+									"protocol": "http",
+									"host": [
+										"198",
+										"18",
+										"128",
+										"100"
+									],
+									"port": "8888",
+									"path": [
+										"restconf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1_02 (Error) Check RESTCONF API Wrong Credentials",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "dummy",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "http://198.18.128.100:8888/restconf",
+									"protocol": "http",
+									"host": [
+										"198",
+										"18",
+										"128",
+										"100"
+									],
+									"port": "8888",
+									"path": [
+										"restconf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "2 Query filtering",
+					"item": [
+						{
+							"name": "2_01 Query RESTCONF Capabilities",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/ietf-restconf-monitoring:restconf-state",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"ietf-restconf-monitoring:restconf-state"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_02 Get RESTCONF data resource",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_03 Get RESTCONF data resource with depth",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data?depth=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_04 Deep-dive into data resource - devices",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices?depth=2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_05 Deep-dive into data resource - devices device",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device?depth=2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device"
+									],
+									"query": [
+										{
+											"key": "depth",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_06 Filter device names",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device?fields=name",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "name"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_07 Filter devices and addresses option 1",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+json"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device?fields=name;address",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "name;address"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2_08 Filter devices and addresses option 2",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/data?fields=tailf-ncs:devices/device(name;address)",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "tailf-ncs:devices/device(name;address)"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "3 Device Actions",
+					"item": [
+						{
+							"name": "3_01 Device Group Fetch SSH Host Keys",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device-group=ALL_ROUTERS/fetch-ssh-host-keys",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device-group=ALL_ROUTERS",
+										"fetch-ssh-host-keys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_02 Device Group check-sync",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device-group=ALL_ROUTERS/check-sync",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device-group=ALL_ROUTERS",
+										"check-sync"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_03 Device sync-from",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/sync-from",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"sync-from"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_04 Device Connect",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/connect",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"connect"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_05 Device Ping",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/ping",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"ping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_06 Device check-sync",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/check-sync",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"check-sync"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_07 Device compare-config",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/compare-config",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"compare-config"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3_08 Device sync-to",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/operations/tailf-ncs:devices/device=xr1/sync-to",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"operations",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"sync-to"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "4 Loopback Creation",
+					"item": [
+						{
+							"name": "4_01 (dry-run) Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<Loopback>\r\n    <id>101</id>\r\n    <ipv4>\r\n        <address>\r\n            <ip>101.101.101.101</ip>\r\n            <mask>/32</mask>\r\n        </address>\r\n    </ipv4>\r\n</Loopback>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_02 (dry-run) Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n    <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <Loopback>\r\n        <id>101</id>\r\n        <ipv4>\r\n            <address>\r\n            <ip>101.101.101.101</ip>\r\n            <mask>/32</mask>\r\n            </address>\r\n        </ipv4>\r\n        </Loopback>\r\n    </interface>\r\n    </config>\r\n  </device>\r\n</devices>\r\n",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_03 Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n    <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <Loopback>\r\n        <id>101</id>\r\n        <ipv4>\r\n            <address>\r\n            <ip>101.101.101.101</ip>\r\n            <mask>/32</mask>\r\n            </address>\r\n        </ipv4>\r\n        </Loopback>\r\n    </interface>\r\n    </config>\r\n  </device>\r\n</devices>\r\n",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_04 Create Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<Loopback>\r\n    <id>101</id>\r\n    <ipv4>\r\n        <address>\r\n            <ip>101.101.101.101</ip>\r\n            <mask>/32</mask>\r\n        </address>\r\n    </ipv4>\r\n</Loopback>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_05 (dry-run) Create Loopbacks in two devices",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device>\r\n        <name>xr1</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback>\r\n                    <id>111</id>\r\n                    <ipv4>\r\n                        <address>\r\n                            <ip>111.111.111.111</ip>\r\n                            <mask>/32</mask>\r\n                        </address>\r\n                    </ipv4>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n    <device>\r\n        <name>xr2</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback>\r\n                    <id>112</id>\r\n                    <ipv4>\r\n                        <address>\r\n                            <ip>112.112.112.112</ip>\r\n                            <mask>/32</mask>\r\n                        </address>\r\n                    </ipv4>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4_06 Create Loopbacks in two devices",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device>\r\n        <name>xr1</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback>\r\n                    <id>111</id>\r\n                    <ipv4>\r\n                        <address>\r\n                            <ip>111.111.111.111</ip>\r\n                            <mask>/32</mask>\r\n                        </address>\r\n                    </ipv4>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n    <device>\r\n        <name>xr2</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback>\r\n                    <id>112</id>\r\n                    <ipv4>\r\n                        <address>\r\n                            <ip>112.112.112.112</ip>\r\n                            <mask>/32</mask>\r\n                        </address>\r\n                    </ipv4>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "5 Edit Loopbacks",
+					"item": [
+						{
+							"name": "5_01 Get Loopback 101",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_02 (dry-run) Edit Loopback IPv4 address (general)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device>\r\n        <name>xr1</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback>\r\n                    <id>101</id>\r\n                    <ipv4>\r\n                        <address>\r\n                            <ip>11.11.11.11</ip>\r\n                            <mask>/32</mask>\r\n                        </address>\r\n                    </ipv4>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_03 (dry-run) Edit Loopback IPv4 address (specific)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<ip>11.11.11.11</ip>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address/ip?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address",
+										"ip"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_04 (Error) Replace Loopback 101 IPv4 address",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<address>\r\n    <ip>11.11.11.11</ip>\r\n</address>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_05 (dry-run) Replace Loopback 101 IPv4 address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<address>\r\n    <ip>11.11.11.11</ip>\r\n    <mask>/32</mask>\r\n</address>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_06 Edit Loopback 101 IPv4 address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<ip>11.11.11.11</ip>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address/ip?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address",
+										"ip"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_07 Replace Loopback 101 IPv4 address",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<address>\r\n    <ip>221.221.221.221</ip>\r\n    <mask>/32</mask>\r\n</address>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101/ipv4/address?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101",
+										"ipv4",
+										"address"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_08 Remove Loopback 101 xr1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/Loopback=101?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"Loopback=101"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_09 (dry-run) Delete Loopbacks in two devices nc:operation",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device>\r\n        <name>xr1</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                               nc:operation=\"delete\">\r\n                    <id>111</id>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n    <device>\r\n        <name>xr2</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                               nc:operation=\"delete\">\r\n                    <id>112</id>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5_10 Delete Loopbacks in two devices nc:operation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device>\r\n        <name>xr1</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                               nc:operation=\"delete\">\r\n                    <id>111</id>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n    <device>\r\n        <name>xr2</name>\r\n        <config>\r\n            <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <Loopback xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                               nc:operation=\"delete\">\r\n                    <id>112</id>\r\n                </Loopback>\r\n            </interface>\r\n        </config>\r\n    </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "6 Interface Shutdown",
+					"item": [
+						{
+							"name": "6_01 (dry-run) Shutdown interface option 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n      <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <GigabitEthernet>\r\n          <id>0/0/0/1</id>\r\n          <shutdown/>\r\n        </GigabitEthernet>\r\n      </interface>\r\n    </config>\r\n  </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_02 (dry-run) Shutdown interface option 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<shutdown/>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_03 Shutdown interface",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<shutdown/>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_04 (dry-run) Remove shutdown interface option 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = pm.response.json();\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['tailf-restconf:result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1/shutdown?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1",
+										"shutdown"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_05 (dry-run) Remove shutdown interface option 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n      <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <GigabitEthernet>\r\n          <id>0/0/0/1</id>\r\n          <shutdown xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                    nc:operation=\"delete\"/>\r\n        </GigabitEthernet>\r\n      </interface>\r\n    </config>\r\n  </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?dry-run=cli",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "dry-run",
+											"value": "cli"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_06 Remove shutdown interface option 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/config/tailf-ned-cisco-ios-xr:interface/GigabitEthernet=0%2F0%2F0%2F1/shutdown?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data",
+										"tailf-ncs:devices",
+										"device=xr1",
+										"config",
+										"tailf-ned-cisco-ios-xr:interface",
+										"GigabitEthernet=0%2F0%2F0%2F1",
+										"shutdown"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6_07 Remove shutdown interface option 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+											"});\r",
+											"let responseData = xml2Json(pm.response.text());\r",
+											"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/yang-data+xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n  <device>\r\n    <name>xr1</name>\r\n    <config>\r\n      <interface xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n        <GigabitEthernet>\r\n          <id>0/0/0/1</id>\r\n          <shutdown xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                    nc:operation=\"delete\"/>\r\n        </GigabitEthernet>\r\n      </interface>\r\n    </config>\r\n  </device>\r\n</devices>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/data?rollback-id=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"data"
+									],
+									"query": [
+										{
+											"key": "rollback-id",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "7 Additional Examples",
+					"item": [
+						{
+							"name": "Device Groups",
+							"item": [
+								{
+									"name": "(dry-run) Create Device Group",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device-group>\r\n        <name>ODD_NUMBERED_ROUTERS</name>\r\n        <device-name>xr1</device-name>\r\n        <device-name>xr3</device-name>\r\n    </device-group>\r\n</devices>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = xml2Json(pm.response.text());\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"packages": {},
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device-group>\r\n        <name>ODD_NUMBERED_ROUTERS</name>\r\n        <device-name>xr1</device-name>\r\n        <device-name>xr3</device-name>\r\n    </device-group>\r\n</devices>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Device Group",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=ODD_NUMBERED_ROUTERS",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=ODD_NUMBERED_ROUTERS"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Update Device Group option 1",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<device-group>\r\n    <name>ODD_NUMBERED_ROUTERS</name>\r\n    <device-name>xr1</device-name>\r\n</device-group>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=ODD_NUMBERED_ROUTERS?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=ODD_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Update Device Group option 2",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<device-name>xr1</device-name>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=ODD_NUMBERED_ROUTERS/device-name?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=ODD_NUMBERED_ROUTERS",
+												"device-name"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = xml2Json(pm.response.text());\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<device-group>\r\n    <name>ODD_NUMBERED_ROUTERS</name>\r\n    <device-name>xr1</device-name>\r\n</device-group>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=ODD_NUMBERED_ROUTERS?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=ODD_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Remove Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=ODD_NUMBERED_ROUTERS?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=ODD_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Remove Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<device-group xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                             nc:operation=\"delete\">\r\n    <name>ODD_NUMBERED_ROUTERS</name>\r\n</device-group>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove Device Group",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = xml2Json(pm.response.text());\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device-group=ODD_NUMBERED_ROUTERS?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device-group=ODD_NUMBERED_ROUTERS"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Services",
+							"item": [
+								{
+									"name": "Service get-modifications",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/operations/DNS-config:DNS-config=DNS-servers-odd/get-modifications",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"operations",
+												"DNS-config:DNS-config=DNS-servers-odd",
+												"get-modifications"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Create DNS Service Instance",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<DNS-config xmlns=\"http://com/example/DNSconfig\">\r\n  <name>DNS-servers-odd</name>\r\n  <device>xr1</device>\r\n  <device>xr3</device>\r\n  <address>8.8.8.8</address>\r\n  <src-if-type>MgmtEth</src-if-type>\r\n  <src-if-number>0/RP0/CPU0/0</src-if-number>\r\n</DNS-config>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?dry-run=cli",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "dry-run",
+													"value": "cli"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create DNS Service Instance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = xml2Json(pm.response.text());\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<DNS-config xmlns=\"http://com/example/DNSconfig\">\r\n  <name>DNS-servers-odd</name>\r\n  <device>xr1</device>\r\n  <device>xr3</device>\r\n  <address>8.8.8.8</address>\r\n  <src-if-type>MgmtEth</src-if-type>\r\n  <src-if-number>0/RP0/CPU0/0</src-if-number>\r\n</DNS-config>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get list of services per device",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/tailf-ncs:devices/device=xr1/service-list",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"tailf-ncs:devices",
+												"device=xr1",
+												"service-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET DNS-config Service Instance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Service instance check-sync",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/operations/DNS-config:DNS-config=DNS-servers-odd/check-sync",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"operations",
+												"DNS-config:DNS-config=DNS-servers-odd",
+												"check-sync"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove DNS server from xr1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = xml2Json(pm.response.text());\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<devices xmlns=\"http://tail-f.com/ns/ncs\">\r\n    <device>\r\n        <name>xr1</name>\r\n        <config>\r\n            <domain xmlns=\"http://tail-f.com/ned/cisco-ios-xr\">\r\n                <name-server xmlns:nc=\"urn:ietf:params:xml:ns:netconf:base:1.0\"\r\n                                  nc:operation=\"delete\">\r\n                    <address>8.8.8.8</address>\r\n                </name-server>\r\n            </domain>\r\n        </config>\r\n    </device>\r\n</devices>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "(dry-run) Service instance re-deploy",
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<input>\r\n    <dry-run>\r\n        <outformat>native</outformat>\r\n    </dry-run>\r\n</input>",
+											"options": {
+												"raw": {
+													"language": "xml"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-odd/re-deploy",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-odd",
+												"re-deploy"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Service instance re-deploy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/yang-data+xml",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-odd/re-deploy",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-odd",
+												"re-deploy"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove Service instance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Successful request\", function () {\r",
+													"    pm.expect(pm.response.code).to.be.oneOf([200,201,202,204]);\r",
+													"});\r",
+													"let responseData = xml2Json(pm.response.text());\r",
+													"pm.environment.set(\"nso.rollback_id\", responseData['result'].rollback.id);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{nso_password}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{nso_user}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/yang-data+xml"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/data/DNS-config:DNS-config=DNS-servers-odd?rollback-id=true",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"data",
+												"DNS-config:DNS-config=DNS-servers-odd"
+											],
+											"query": [
+												{
+													"key": "rollback-id",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "(Error) Check RESTCONF API Wrong Port",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{nso_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{nso_user}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/yang-data+xml"
+									}
+								],
+								"url": {
+									"raw": "http://198.18.128.100:8887/restconf",
+									"protocol": "http",
+									"host": [
+										"198",
+										"18",
+										"128",
+										"100"
+									],
+									"port": "8887",
+									"path": [
+										"restconf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "99 Rollbacks",
+			"item": [
+				{
+					"name": "Get Partial Rollback Files",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{nso_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{nso_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/data/tailf-rollback:rollback-files/file?limit=3&offset=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"data",
+								"tailf-rollback:rollback-files",
+								"file"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "APPLY Rollback",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{nso_password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{nso_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/yang-data+json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/yang-data+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\": {\r\n        \"fixed-number\": {{nso.rollback_id}}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/data/tailf-rollback:rollback-files/apply-rollback-file",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"data",
+								"tailf-rollback:rollback-files",
+								"apply-rollback-file"
+							],
+							"query": [
+								{
+									"key": "no-networking",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://198.18.128.100:8888/restconf"
+		},
+		{
+			"key": "nso_user",
+			"value": "cisco"
+		},
+		{
+			"key": "nso_password",
+			"value": "cisco123"
+		},
+		{
+			"key": "nso.rollback_id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
