@@ -4,7 +4,7 @@ Please find below the dCloud eXpo link to access a lab instance:
 
 https://expo.ciscodcloud.com/<...>
 
-Once there, click on the "Explore button", enter an email address and agree to the termas and conditions:
+Once there, click on the "Explore button", enter an email address and agree to the terms and conditions:
 
 <img width="1248" height="808" alt="image" src="https://github.com/user-attachments/assets/902cfaef-74be-485c-9cee-b4dc7cce4f6e" />
 
