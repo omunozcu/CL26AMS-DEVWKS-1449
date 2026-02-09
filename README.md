@@ -8,6 +8,14 @@ Once there, click on the "Explore button", enter an email address and agree to t
 
 <img width="1248" height="808" alt="image" src="https://github.com/user-attachments/assets/902cfaef-74be-485c-9cee-b4dc7cce4f6e" />
 
+If you wish, feel free to use your workstation's email address:
+
+Workstation  Email address
+___________  _______________________________
+1            ws1-seat1@devnet-events.wbx.ai
+...
+16           ws1-seat16@devnet-events.wbx.ai
+
 This will launch an instance of the lab.
 
 The lab guide document can be found in the /docs folder of this repository.
