@@ -10,8 +10,7 @@ Once there, click on the "Explore button", enter an email address and agree to t
 
 If you wish, feel free to use your workstation's email address:
 
-Workstation  Email address
-___________  _______________________________
+WORKSTATION  EMAIL
 1            ws1-seat1@devnet-events.wbx.ai
 ...
 16           ws1-seat16@devnet-events.wbx.ai
