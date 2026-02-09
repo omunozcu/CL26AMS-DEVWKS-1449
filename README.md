@@ -10,10 +10,11 @@ Once there, click on the "Explore button", enter an email address and agree to t
 
 If you wish, feel free to use your workstation's email address:
 
-WORKSTATION  EMAIL
-1            ws1-seat1@devnet-events.wbx.ai
-...
-16           ws1-seat16@devnet-events.wbx.ai
+| Workstation  | Email |
+| ------------- | ------------- |
+| 1  | ws1-seat1@devnet-events.wbx.ai  |
+| ...  | ...  |
+| 16  | ws1-seat16@devnet-events.wbx.ai  |
 
 This will launch an instance of the lab.
 
